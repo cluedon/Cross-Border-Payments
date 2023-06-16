@@ -1,0 +1,34 @@
+import React, { useEffect, useState } from 'react';
+import { ContractKit } from '@celo/contractkit';
+
+function App() {
+    const [kit, setKit] = useState(null);
+
+    useEffect(() => {
+        initializeCelo();
+    }, []);
+
+    const initializeCelo = async () => {
+        try {
+            // Initialize Celo ContractKit with the Celo network URL
+            const celoNetworkUrl = '<CELO_NETWORK_URL>'; // Replace with the Celo network URL
+            const contractKit = ContractKit.newKit(celoNetworkUrl);
+            setKit(contractKit);
+        } catch (error) {
+            console.error('Failed to initialize Celo ContractKit:', error);
+        }
+    };
+
+    const handlePayment = async () => {
+        // Implement the payment logic here
+    };
+
+    return (
+        <div>
+            <h1>Cross-Border Payment and Remittance</h1>
+            <button onClick={handlePayment}>Send Payment</button>
+        </div>
+    );
+}
+
+export default App;
